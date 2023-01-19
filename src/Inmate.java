@@ -1,10 +1,23 @@
 public class Inmate extends Person {
-    private int sentenceLength;
     private String crime;
+    private int sentenceLength;
 
-    public Inmate(String firstName, String lastName, String phoneNumber, int sentenceLength, String crime) {
+    public Inmate(String firstName, String lastName, String phoneNumber, String crime, int sentenceLength) {
         super(firstName, lastName, phoneNumber);
-        this.sentenceLength = sentenceLength;
         this.crime = crime;
+        this.sentenceLength = sentenceLength;
+    }
+
+    public String getCrime() {
+        return crime;
+    }
+
+    public int getSentenceLength() {
+        return sentenceLength;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " " + crime + " " + sentenceLength +  " months";
     }
 }
