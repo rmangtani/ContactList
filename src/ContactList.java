@@ -43,6 +43,10 @@ public class ContactList
         System.out.println("2. Inmate");
         int contactType = input.nextInt();
         input.nextLine();
+        /**
+         * Asking user for input for the instance variables
+         * of the Person class (applies to all subclasses of Person)
+         */
         System.out.println("Please fill in the following information.");
         System.out.println("First Name:");
         String firstName = input.nextLine();
@@ -50,6 +54,10 @@ public class ContactList
         String lastName = input.nextLine();
         System.out.println("Phone number:");
         String phoneNumber = input.nextLine();
+        /**
+         * Asking user for  input for the instance variables
+         * specific to each subclass of Person
+         */
         if (contactType == 1) {
             System.out.println("Grade: ");
             int grade = input.nextInt();
@@ -83,6 +91,14 @@ public class ContactList
         Person temp;
         String compare1 = "";
         String compare2 = "";
+        /**
+         * Variables compare1 and compare2 are consecutive values in the
+         * ArrayList contacts that are compared to each other. If compare1
+         * is greater than compare2 (meaning their lexicographic difference
+         * is greater than 0), switch compare1 and compare2. Variable j in
+         * the nested for loop goes up to numContacts-i-1 because after each
+         * iteration the next last value in contacts will be at it's correct index
+         */
         for (int i = 0; i < numContacts-1; i++) {
             for (int j = 0; j < numContacts-i-1; j++) {
                 if (sortBy == 0) {
@@ -97,7 +113,6 @@ public class ContactList
                     compare1 = contacts.get(j).getPhoneNumber();
                     compare2 = contacts.get(j+1).getPhoneNumber();
                 }
-                System.out.println(compare1.compareTo(compare2));
                 if (compare1.compareTo(compare2) > 0) {
                     temp = contacts.get(j);
                     contacts.set(j, contacts.get(j+1));
@@ -107,6 +122,10 @@ public class ContactList
         }
     }
 
+    /**
+     * @param firstName
+     * @return the person with firstName and null if nobody has firstName
+     */
     public Person searchByFirstName(String firstName) {
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getFirstName().equals(firstName)) {
@@ -136,6 +155,8 @@ public class ContactList
 
     /**
      * Lists just the Student objects in the Contact List
+     * by checking if each contact in contacts is a Student,
+     * and printing the contact if it is
      */
     public void listStudents() {
         for (int i = 0; i < contacts.size(); i++) {
@@ -151,7 +172,7 @@ public class ContactList
      */
     public void run() {
         System.out.println("Welcome to your Contacts List");
-        System.out.println("Please pick from the following menu options");
+        System.out.println("Please pick from the following menu options\n");
         while (true) {
             printMenuOptions();
             Scanner input = new Scanner(System.in);
@@ -178,6 +199,10 @@ public class ContactList
             else if (userOption == 5) {
                 listStudents();
             }
+            /**
+             * For options 6, 7, and 8 if the user types a value that does not exist
+             * prints "[value] is not in the list"
+             */
             else if (userOption == 6) {
                 System.out.println("Enter a name:");
                 String firstName = input.nextLine();

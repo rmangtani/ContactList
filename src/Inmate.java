@@ -16,8 +16,9 @@ public class Inmate extends Person {
         return sentenceLength;
     }
 
+    // Overrides toString method in Person class
     @Override
     public String toString() {
-        return super.toString() + " " + crime + " " + sentenceLength +  " months";
+        return super.toString() + " Crime: " + crime + " Sentence length: " + sentenceLength +  " months";
     }
 }
